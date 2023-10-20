@@ -15,7 +15,7 @@ import {
   IntervalsContainer,
 } from './styles'
 import { ArrowRight } from 'phosphor-react'
-import { useFieldArray, useForm } from 'react-hook-form'
+import { Controller, useFieldArray, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { getWeekDays } from '@/utils/get-week-days'
 
@@ -26,6 +26,7 @@ export default function TimeIntervals() {
     register,
     handleSubmit,
     control,
+    watch,
     formState: { isSubmitting, errors },
   } = useForm({
     defaultValues: {
@@ -48,6 +49,8 @@ export default function TimeIntervals() {
     name: 'intervals',
   })
 
+  const intervals = watch('intervals')
+
   function handleSetTimeIntervals() {
     return null
   }
@@ -64,13 +67,26 @@ export default function TimeIntervals() {
         <MultiStep size={4} currentStep={3} />
       </Header>
 
-      <IntervalBox as="form" onSubmit={handleSetTimeIntervals}>
+      <IntervalBox as="form" onSubmit={handleSubmit(handleSetTimeIntervals)}>
         <IntervalsContainer>
           {fields.map((field, index) => {
             return (
               <IntervalItem key={field.id}>
                 <IntervalDay>
-                  <Checkbox />
+                  <Controller
+                    name={`intervals.${index}.eneabled`}
+                    control={control}
+                    render={({ field }) => {
+                      return (
+                        <Checkbox
+                          onCheckedChange={(checked) => {
+                            field.onChange(checked === true)
+                          }}
+                          checked={field.value}
+                        />
+                      )
+                    }}
+                  />
                   <Text>{weekDays[field.weekDay]}</Text>
                 </IntervalDay>
                 <IntervalInputs>
@@ -78,6 +94,7 @@ export default function TimeIntervals() {
                     size="sm"
                     type="time"
                     step={60}
+                    disabled={intervals[index].eneabled === false}
                     crossOrigin="true"
                     {...register(`intervals.${index}.startTime`)}
                   />
@@ -85,6 +102,7 @@ export default function TimeIntervals() {
                     size="sm"
                     type="time"
                     step={60}
+                    disabled={intervals[index].eneabled === false}
                     crossOrigin="true"
                     {...register(`intervals.${index}.endTime`)}
                   />
