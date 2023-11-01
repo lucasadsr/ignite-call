@@ -21,21 +21,20 @@ import { z } from 'zod'
 import { getWeekDays } from '@/utils/get-week-days'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { convertTimeStringToMinutes } from '@/utils/convert-time-to-minutes'
+import { api } from '@/lib/axios'
 
 const timeIntervalsFormSchema = z.object({
   intervals: z
     .array(
       z.object({
-        weekDay: z.number(),
+        weekDay: z.number().min(0).max(6),
         enabled: z.boolean(),
         startTime: z.string(),
         endTime: z.string(),
       }),
     )
     .length(7)
-    .transform((intervals) =>
-      intervals.filter((intervals) => intervals.enabled),
-    )
+    .transform((intervals) => intervals.filter((interval) => interval.enabled))
     .refine((intervals) => intervals.length > 0, {
       message: 'Você precisa selecionar pelo menos um dia da semana',
     })
@@ -57,7 +56,7 @@ const timeIntervalsFormSchema = z.object({
       },
       {
         message:
-          'O horário de término deve ser pelo menos uma hora distante do início',
+          'O horário de término deve ser pelo menos 1h distante do início.',
       },
     ),
 })
@@ -96,10 +95,12 @@ export default function TimeIntervals() {
 
   const intervals = watch('intervals')
 
-  function handleSetTimeIntervals(data: any) {
-    const formData = data as TimeIntervalsFormOutput
+  async function handleSetTimeIntervals(data: any) {
+    const { intervals } = data as TimeIntervalsFormOutput
 
-    console.log(data)
+    await api.post('/users/time-intervals', {
+      intervals,
+    })
   }
 
   return (
