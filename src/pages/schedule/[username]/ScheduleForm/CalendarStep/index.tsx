@@ -19,7 +19,6 @@ interface Availability {
 
 export function CalendarStep() {
   const [selectedDate, setSelectedDate] = useState<Date | null>(null)
-  // const [availability, setAvailability] = useState<Availability | null>(null)
 
   const router = useRouter()
 
@@ -48,15 +47,6 @@ export function CalendarStep() {
     },
     enabled: !!selectedDate,
   })
-
-  // useEffect(() => {
-  //   if (!selectedDate) {
-  //     return
-  //   }
-  //     .then((response) => {
-  //       setAvailability(response.data)
-  //     })
-  // }, [selectedDate, username])
 
   return (
     <Container isTimePickerOpen={isDateSelected}>
