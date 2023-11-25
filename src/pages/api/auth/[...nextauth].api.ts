@@ -36,6 +36,8 @@ export function buildNextAuthOptions(
       }),
     ],
 
+    secret: process.env.NEXT_AUTH_SECRET,
+
     callbacks: {
       async signIn({ account }) {
         if (
