@@ -1,4 +1,4 @@
-# Ignite Call - Em desenvolvimento
+# Ignite Call
 
 O Ignite Call é um projeto desenvolvido como parte do curso da Rocketseat. Ele permite que os usuários conectem seus calendários do Google e facilitem o agendamento de compromissos nos períodos de tempo livre.
 
@@ -8,6 +8,23 @@ O Ignite Call é um projeto desenvolvido como parte do curso da Rocketseat. Ele 
   <img src="./public/print3.jpg" height="400px" />
   <img src="./public/print4.jpg" height="400px" />
 </div>
+=======
+## Tecnologias
+
+- Next.js
+- Typescript
+- Prisma
+- Google APIs
+- Google Cloud Platform
+- Axios
+- Next Seo
+- Nookies
+- React Hook Form
+- Design System
+- Stitches
+- Phosphor icons
+- Zod
+>>>>>>> 0169cde04768d2c7b0b5339000a9a8afe6a8bca5
 
 ## Funcionalidades
 
