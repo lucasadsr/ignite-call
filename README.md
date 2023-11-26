@@ -8,7 +8,7 @@ O Ignite Call é um projeto desenvolvido como parte do curso da Rocketseat. Ele 
   <img src="./public/print3.jpg" height="400px" />
   <img src="./public/print4.jpg" height="400px" />
 </div>
-=======
+
 ## Tecnologias
 
 - Next.js
@@ -24,8 +24,7 @@ O Ignite Call é um projeto desenvolvido como parte do curso da Rocketseat. Ele 
 - Stitches
 - Phosphor icons
 - Zod
->>>>>>> 0169cde04768d2c7b0b5339000a9a8afe6a8bca5
-
+  
 ## Funcionalidades
 
 - Conexão com o Calendário do Google
