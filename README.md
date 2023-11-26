@@ -2,6 +2,13 @@
 
 O Ignite Call é um projeto desenvolvido como parte do curso da Rocketseat. Ele permite que os usuários conectem seus calendários do Google e facilitem o agendamento de compromissos nos períodos de tempo livre.
 
+<div align="center">
+  <img src="./public/print1.jpg" height="400px" />
+  <img src="./public/print2.jpg" height="400px" />
+  <img src="./public/print3.jpg" height="400px" />
+  <img src="./public/print4.jpg" height="400px" />
+</div>
+
 ## Funcionalidades
 
 - Conexão com o Calendário do Google
